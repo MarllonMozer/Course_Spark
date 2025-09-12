@@ -1,5 +1,4 @@
 #  %%
-from pyparsing import col
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
@@ -15,7 +14,7 @@ arqschema = "id INT, nome STRING, status STRING, cidade STRING, vendas INT, data
 caminho = "../download/despachantes.csv"
 
 # %%
-despachantes = spark.read.csv("./download/despachantes.csv",
+despachantes = spark.read.csv("../download/despachantes.csv",
                              header= False,
                              schema= arqschema)
 despachantes.show()
