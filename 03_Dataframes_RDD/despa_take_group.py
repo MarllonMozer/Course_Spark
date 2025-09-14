@@ -14,7 +14,7 @@ arqschema = "id INT, nome STRING, status STRING, cidade STRING, vendas INT, data
 caminho = "../download/despachantes.csv"
 
 # %%
-despachantes = spark.read.csv("../download/despachantes.csv",
+despachantes = spark.read.csv(caminho,
                              header= False,
                              schema= arqschema)
 despachantes.show()
@@ -51,4 +51,6 @@ despachantes_parquet = spark.read.parquet("/despachantes.parquet")
 despachantes_parquet.show()
 # %%
 despachantes.coalesce(1).write.csv("despachantes.csv", header=True)
+# %%
+despachantes.write.json("despachantes.json")
 # %%
